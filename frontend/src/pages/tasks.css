@@ -1,0 +1,110 @@
+/* ===== KANBAN BOARD ===== */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 1100px) { .kanban-board { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .kanban-board { grid-template-columns: 1fr; } }
+
+.kanban-column {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition);
+}
+.kanban-column:hover { background: rgba(255,255,255,0.035); }
+
+.kanban-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-top: 3px solid;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.kanban-count {
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  padding: 2px 9px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.kanban-cards {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 200px;
+}
+
+.kanban-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: grab;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.kanban-card:hover {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.kanban-card.dragging {
+  opacity: 0.4;
+  transform: rotate(2deg) scale(0.97);
+  box-shadow: 0 12px 30px rgba(124,58,237,0.4);
+}
+.kanban-card:active { cursor: grabbing; }
+
+.kanban-card-priority {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.kanban-card-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-top: 6px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+.kanban-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.kanban-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.kanban-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border: 2px dashed rgba(255,255,255,0.06);
+  border-radius: 8px;
+  min-height: 80px;
+  text-align: center;
+  padding: 16px;
+}

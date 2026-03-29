@@ -1,0 +1,12 @@
+/* General resets required on top of MUI's CssBaseline */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
